@@ -1,0 +1,37 @@
+
+
+use "jerimum"
+
+fundo = Imagem("estrada1.jpg")
+jeep_imagem = Imagem("jeep1.png")
+var jeep_x :=aleatorio(50,550)
+cone_imagem = Imagem("cone.jpg")
+
+var cone_y := -100
+var cone_x := aleatorio(50, 550)
+var colisao := falso
+
+atualize()
+  se colisao == falso então
+    cone_y := cone_y + 1
+    se cone_y > 300 e cone_x > 250 e cone_x < 450 então
+      colisao := verdadeiro
+    fim
+
+    se cone_y > 480 então
+      cone_y := -100
+      cone_x := aleatorio(50, 550)
+      
+      
+    fim
+  fim
+fim
+
+desenhe()
+  cone_imagem.desenhe(cone_x, cone_y, 2, 0, 0.2, 0.2)
+  fundo.desenhe(0, 3, 0, 0, 1, 0.7)
+  jeep_imagem.desenhe(jeep_x,350, 4, 0, 1, 0.6)
+  
+fim
+
+jogo.iniciar("Título", 640, 480, atualize, desenhe)
